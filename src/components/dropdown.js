@@ -1,6 +1,9 @@
  
 import React, { Component } from 'react';
-import FontAwesome from 'react-fontawesome'
+import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faSearch, faCartArrowDown, faArrowDown, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import './dropdown.css';
 
 export default class Dropdown extends Component {
 
@@ -11,13 +14,14 @@ export default class Dropdown extends Component {
           listOpen: false,
           headerTitle: this.props.title,
           list:this.props.list,
-          addBtn: this.props.addBtn
+          addBtn: this.props.addBtn,
+          noOfRecords : this.props.noOfRecord
         }
       }
       static getDerivedStateFromProps(nextProps){
         const count = nextProps.list.filter(function(a) { return a.selected; }).length;
-        const inputV = nextProps.list;
-        console.log('coungt',inputV)
+        // const inputV = nextProps.selectedItem 
+       // console.log('count',inputV)
     
     if(count === 0){
           return {headerTitle: nextProps.title}
@@ -37,34 +41,49 @@ export default class Dropdown extends Component {
       }
       toggleList(){
         this.setState(prevState => ({
-          listOpen: !prevState.listOpen
+          listOpen: !prevState.listOpen,
+          list:prevState.list
         }))
       }
 
       
     
       render(){
+        const btnStyle = {
+          float : 'none'
+        };
+        
         const{list} = this.props
-        const{inputVal,listOpen, headerTitle } = this.state
+        const{inputVal,listOpen, headerTitle,noOfRecords } = this.state
+        const showMore = ((this.props.noOfRecord != list.length)&&(list.length>0)) ? true : false
       
         return(
-          <div className="dd-wrappe0r">
+          <div className="container DropdownBox">
            
-      <div className="dd-header" onClick={() => this.toggleList()}>
-              <div className="dd-header-title">{headerTitle}</div>
+      <div  onClick={() => this.toggleList()}>
+              <div className="dd-header-title">{headerTitle} <FontAwesomeIcon icon={faCaretDown} /></div>
               {listOpen
                
               }
           </div>
-          <input type="text" className="input"   onChange={(event)=>this.props.searchItem(event)} placeholder="Search..." />
+            {listOpen &&    <div className=""> <FontAwesomeIcon icon={faSearch} /><input type="text" className="input" value={this.props.selectedItem} onChange={(event)=>this.props.searchItem(event)} placeholder="Search..." />
+            </div>}
               {this.props.addBtn &&
-     <div>        <button variant="outline-primary" onClick={(e) => this.props.addItem(e)}>Add & Select</button></div> }
+            
+     <div>     
+          <p>{this.props.selectedItem}" not found</p>
+          <button style={btnStyle}  onClick={(e) => this.props.addItem(e)}>Add & Select</button></div> }
       {listOpen && <ul className="dd-list">
-             {list.map((item) => (
+             {list.slice(0, this.props.noOfRecord).map((item, index) => (
               <li className="dd-list-item" key={item.title} onClick={() => this.props.toggleItem(item.id, item.key)}>{item.title} {item.selected && <FontAwesome name="check"/>}</li>
-              ))}
-            </ul>}
+              ))}   
+             { showMore && <p onClick={() => this.props.showMoreItems(this.props.noOfRecord)}>{this.props.noOfRecord} more...</p> }
+            </ul>
+            
+            }
+             
           </div>
+          
         )
       }
 }
