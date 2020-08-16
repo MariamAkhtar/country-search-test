@@ -47,7 +47,6 @@ export default class Dropdown extends Component {
   toggleList() {
     this.setState((prevState) => ({
       listOpen: !prevState.listOpen,
-      list: prevState.list,
     }));
   }
 
@@ -59,7 +58,7 @@ export default class Dropdown extends Component {
     const { list } = this.props;
     const { inputVal, listOpen, headerTitle, noOfRecords } = this.state;
     const showMore =
-      this.props.noOfRecord != list.length && list.length > 0 ? true : false;
+      this.props.noOfRecord != list.length && list.length > 0 && this.props.selectedItem=='' ? true : false;
 
     return (
       <div className="container DropdownBox">
