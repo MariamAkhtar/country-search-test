@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/country-search-test/static/css/main.c9f09362.chunk.css",
+    "main.js": "/country-search-test/static/js/main.f203176e.chunk.js",
+    "main.js.map": "/country-search-test/static/js/main.f203176e.chunk.js.map",
+    "runtime-main.js": "/country-search-test/static/js/runtime-main.341abd2a.js",
+    "runtime-main.js.map": "/country-search-test/static/js/runtime-main.341abd2a.js.map",
+    "static/css/2.11829350.chunk.css": "/country-search-test/static/css/2.11829350.chunk.css",
+    "static/js/2.2e0eb141.chunk.js": "/country-search-test/static/js/2.2e0eb141.chunk.js",
+    "static/js/2.2e0eb141.chunk.js.map": "/country-search-test/static/js/2.2e0eb141.chunk.js.map",
+    "index.html": "/country-search-test/index.html",
+    "precache-manifest.5f92a6bba095b2a4fb65c2f72a265ec5.js": "/country-search-test/precache-manifest.5f92a6bba095b2a4fb65c2f72a265ec5.js",
+    "service-worker.js": "/country-search-test/service-worker.js",
+    "static/css/2.11829350.chunk.css.map": "/country-search-test/static/css/2.11829350.chunk.css.map",
+    "static/css/main.c9f09362.chunk.css.map": "/country-search-test/static/css/main.c9f09362.chunk.css.map",
+    "static/js/2.2e0eb141.chunk.js.LICENSE.txt": "/country-search-test/static/js/2.2e0eb141.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.341abd2a.js",
+    "static/css/2.11829350.chunk.css",
+    "static/js/2.2e0eb141.chunk.js",
+    "static/css/main.c9f09362.chunk.css",
+    "static/js/main.f203176e.chunk.js"
+  ]
+}
